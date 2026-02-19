@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Pets Grooming Salon | Sacramento</title>
-<script src=""></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Pets Grooming | Sacramento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #f0f9ff; font-family: sans-serif; }
+        .card { background: white; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); padding: 2rem; }
+    </style>
 </head>
-<body class="bg-blue-50 font-sans">
-<nav class="p-6 bg-white shadow-md flex justify-between items-center">
-<h1 class="text-2xl font-bold text-blue-600">City Pets 🐾</h1>
-<a href="tel:+19168202485" class="bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg">Call Now</a>
-</nav>
-<header class="text-center py-20 px-4">
-<h2 class="text-5xl font-extrabold text-gray-800 mb-4">Professional Grooming for Your Best Friend</h2>
-<p class="text-xl text-gray-600">The best 5-star care in Sacramento!</p>
-</header>
-<section class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 p-10 bg-white rounded-3xl shadow-xl">
-<div>
-<h3 class="text-2xl font-bold mb-4 text-gray-800">Our Location</h3>
-<p class="text-gray-700">1008 S St A, Sacramento, CA 95811</p>
-<p class="mt-4 font-bold text-blue-600">Open at 9:00 AM</p>
-</div>
-<div class="bg-blue-100 p-6 rounded-2xl">
-<h3 class="text-2xl font-bold mb-2 text-blue-800">Our Services</h3>
-<ul class="list-disc list-inside text-blue-900">
-<li>Full Grooming & Styling</li>
-<li>Healthy Bath & Brush</li>
-<li>Nail Trimming & Ear Cleaning</li>
-</ul>
-</div>
-</section>
-<footer class="text-center py-10 text-gray-500">
-<p>Designed with ❤️ by <strong>M-Ghasamzadeh-Dev</strong></p>
-</footer>
+<body>
+    <nav style="background: white; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <h1 style="color: #2563eb; font-size: 1.5rem; font-weight: bold;">City Pets 🐾</h1>
+        <a href="tel:+19168202485" style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 50px; text-decoration: none;">Call Now</a>
+    </nav>
+
+    <div style="text-align: center; padding: 4rem 1rem;">
+        <h2 style="font-size: 2.5rem; font-weight: 800; color: #1f2937;">Professional Grooming</h2>
+        <p style="color: #4b5563; font-size: 1.25rem;">The best 5-star care in Sacramento!</p>
+    </div>
+
+    <div style="max-width: 800px; margin: 0 auto; display: grid; gap: 2rem; padding: 0 1rem;">
+        <div class="card">
+            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">📍 Our Location</h3>
+            <p style="color: #374151;">1008 S St A, Sacramento, CA 95811</p>
+            <p style="color: #2563eb; font-weight: bold; margin-top: 0.5rem;">Open at 9:00 AM</p>
+        </div>
+
+        <div class="card" style="background: #dbeafe;">
+            <h3 style="font-size: 1.5rem; font-weight: bold; color: #1e40af;">✂️ Our Services</h3>
+            <ul style="color: #1e3a8a; line-height: 2;">
+                <li>Full Grooming & Styling</li>
+                <li>Healthy Bath & Brush</li>
+                <li>Nail Trimming & Ear Cleaning</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 3rem; color: #6b7280;">
+        <p>Designed with ❤️ by <strong>M-Ghasamzadeh-Dev</strong></p>
+    </footer>
 </body>
 </html>
