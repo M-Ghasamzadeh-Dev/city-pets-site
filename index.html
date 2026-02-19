@@ -3,89 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City Pets | Sacramento's Luxury Grooming</title>
+    <title>City Pets | Premium Pet Resort</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Public+Sans:wght@300;400;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Public+Sans:wght@300;400;800&display=swap');
         
-        body { font-family: 'Public Sans', sans-serif; background-color: #0f172a; color: white; }
-        h1, h2, .font-heading { font-family: 'Unbounded', sans-serif; }
+        body { font-family: 'Public Sans', sans-serif; background-color: #020617; color: white; }
+        .font-hero { font-family: 'Unbounded', sans-serif; }
+
+        /* استایل پس‌زمینه دقیقا شبیه اسکرین‌شات 150 */
+        .hero-bg {
+            background: linear-gradient(to right, rgba(2, 6, 23, 0.9) 30%, rgba(2, 6, 23, 0.2)), 
+                        url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
 
         .glass-card { 
             background: rgba(255, 255, 255, 0.03); 
-            backdrop-filter: blur(12px); 
+            backdrop-filter: blur(15px); 
             border: 1px solid rgba(255,255,255,0.08); 
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+            transition: all 0.3s ease;
         }
-
-        /* افکت کلیک و هاور */
-        .glass-card:hover { transform: translateY(-8px); border-color: #eab308; }
-        .selected { border-color: #eab308; background: rgba(234, 179, 8, 0.1); box-shadow: 0 0 30px rgba(234, 179, 8, 0.2); }
+        .selected { border-color: #fbbf24; background: rgba(251, 191, 36, 0.15); }
         
-        .btn-glow { transition: all 0.3s ease; }
-        .btn-glow:hover { box-shadow: 0 0 20px rgba(234, 179, 8, 0.6); transform: scale(1.02); }
+        /* دکمه‌های شیشه‌ای مشابه عکس */
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+        .btn-glass:hover { background: rgba(255, 255, 255, 0.2); transform: translateX(5px); }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <nav class="sticky top-0 z-[100] bg-slate-950/80 backdrop-blur-md px-6 py-4 border-b border-white/5 flex justify-between items-center">
-        <div class="text-xl font-heading font-bold uppercase tracking-tighter">CITY<span class="text-yellow-500">PETS</span></div>
-        <div id="price-display" class="bg-yellow-500/10 text-yellow-500 px-4 py-1 rounded-full font-bold text-sm border border-yellow-500/20">
-            Total: $0
-        </div>
+    <nav class="fixed top-0 w-full z-[100] px-6 py-5 flex justify-between items-center bg-transparent">
+        <div class="text-xl font-hero font-bold uppercase tracking-tighter">CITY<span class="text-yellow-500">PETS</span></div>
+        <button onclick="sendAppt()" class="bg-yellow-500 text-black px-6 py-2 rounded-full font-extrabold text-[10px] tracking-widest uppercase hover:scale-105 transition">Book Appointment</button>
     </nav>
 
-    <header class="py-20 px-6 text-center max-w-4xl mx-auto">
-        <span class="text-yellow-500 font-bold tracking-[0.3em] text-xs uppercase">Premium Pet Resort</span>
-        <h1 class="text-5xl md:text-7xl font-bold mt-4 mb-8 leading-tight">Elevated Care for Your Friend.</h1>
-        <p class="text-gray-400 text-lg mb-10">Select your custom services below. We’ll calculate the estimate for you instantly.</p>
-    </header>
-
-    <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
-        <div onclick="toggleSvc(this, 'Spa Bath', 45)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[300px]">
-            <div>
-                <div class="text-4xl mb-6">🛁</div>
-                <h3 class="text-2xl font-bold mb-2 font-heading">Spa Bath</h3>
-                <p class="text-gray-500 text-sm">Organic shampoo, blueberry facial, and luxury dry.</p>
-            </div>
-            <div class="flex justify-between items-center mt-6">
-                <span class="text-2xl font-bold text-yellow-500">$45</span>
-                <div class="icon-state w-10 h-10 rounded-full border border-white/20 flex items-center justify-center font-bold text-xl">+</div>
-            </div>
-        </div>
-
-        <div onclick="toggleSvc(this, 'Full Style', 75)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[300px]">
-            <div>
-                <div class="text-4xl mb-6">✂️</div>
-                <h3 class="text-2xl font-bold mb-2 font-heading">Full Style</h3>
-                <p class="text-gray-500 text-sm">Professional breed-standard cut by master groomers.</p>
-            </div>
-            <div class="flex justify-between items-center mt-6">
-                <span class="text-2xl font-bold text-yellow-500">$75</span>
-                <div class="icon-state w-10 h-10 rounded-full border border-white/20 flex items-center justify-center font-bold text-xl">+</div>
-            </div>
-        </div>
-
-        <div onclick="toggleSvc(this, 'Day Resort', 35)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[300px]">
-            <div>
-                <div class="text-4xl mb-6">🏨</div>
-                <h3 class="text-2xl font-bold mb-2 font-heading">Day Resort</h3>
-                <p class="text-gray-400 text-sm">All-day play and relaxation in our private suites.</p>
-            </div>
-            <div class="flex justify-between items-center mt-6">
-                <span class="text-2xl font-bold text-yellow-500">$35</span>
-                <div class="icon-state w-10 h-10 rounded-full border border-white/20 flex items-center justify-center font-bold text-xl">+</div>
+    <section class="hero-bg min-h-screen flex items-center px-6 md:px-20 relative">
+        <div class="max-w-3xl mt-10">
+            <span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-6 inline-block">Now Open in Sacramento</span>
+            <h1 class="font-hero text-6xl md:text-8xl leading-none mb-6">
+                Beyond Just <br> <span class="text-yellow-500">Grooming.</span>
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
+                Inspired by luxury pet resorts, we provide a stress-free environment for your companions with premium organic treatments.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" class="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-gray-200 transition">GET STARTED</button>
+                <button class="btn-glass px-8 py-4 rounded-xl font-bold flex items-center gap-2">
+                    VIEW GALLERY <span>→</span>
+                </button>
             </div>
         </div>
     </section>
 
-    <div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-slate-950 via-slate-950/90 to-transparent z-50">
-        <div class="max-w-md mx-auto">
-            <button onclick="sendAppt()" class="btn-glow w-full bg-yellow-500 text-black py-5 rounded-3xl font-black text-lg shadow-2xl flex justify-center items-center gap-3">
-                <span>BOOK APPOINTMENT</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </button>
+    <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="mb-16">
+            <h2 class="font-hero text-3xl md:text-4xl">Signature Services</h2>
+            <div class="h-1 w-20 bg-yellow-500 mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div onclick="toggleSvc(this, 'Spa Bath', 45)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px] cursor-pointer group">
+                <div>
+                    <div class="text-4xl mb-6">🛁</div>
+                    <h3 class="text-2xl font-bold mb-4">Spa Bath</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Oatmeal shampoo, blueberry facial, and deep conditioning treatment.</p>
+                </div>
+                <div class="flex justify-between items-center mt-8">
+                    <span class="text-2xl font-bold text-yellow-500">$45</span>
+                    <div class="icon-ui w-12 h-12 rounded-full border border-white/10 flex items-center justify-center font-bold text-xl transition-all group-hover:border-yellow-500">+</div>
+                </div>
+            </div>
+
+            <div onclick="toggleSvc(this, 'Styling Cut', 75)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px] cursor-pointer group">
+                <div>
+                    <div class="text-4xl mb-6">✂️</div>
+                    <h3 class="text-2xl font-bold mb-4">Styling Cut</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Full breed-standard haircut or creative styling by senior groomers.</p>
+                </div>
+                <div class="flex justify-between items-center mt-8">
+                    <span class="text-2xl font-bold text-yellow-500">$75</span>
+                    <div class="icon-ui w-12 h-12 rounded-full border border-white/10 flex items-center justify-center font-bold text-xl transition-all group-hover:border-yellow-500">+</div>
+                </div>
+            </div>
+
+            <div onclick="toggleSvc(this, 'Day Resort', 35)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px] cursor-pointer group">
+                <div>
+                    <div class="text-4xl mb-6">🏨</div>
+                    <h3 class="text-2xl font-bold mb-4">Day Resort</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Socialization, play-time, and relaxation in our luxury suites.</p>
+                </div>
+                <div class="flex justify-between items-center mt-8">
+                    <span class="text-2xl font-bold text-yellow-500">$35</span>
+                    <div class="icon-ui w-12 h-12 rounded-full border border-white/10 flex items-center justify-center font-bold text-xl transition-all group-hover:border-yellow-500">+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="price-bar" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] opacity-0 transition-all duration-500 scale-90">
+        <div class="bg-white text-black px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-6">
+            <div class="font-bold text-sm uppercase tracking-tighter">Current Estimate: <span class="text-xl text-yellow-600 ml-1">$<span id="total-val">0</span></span></div>
+            <button onclick="sendAppt()" class="bg-black text-white px-6 py-2 rounded-xl font-bold text-xs">BOOK NOW</button>
         </div>
     </div>
 
@@ -95,13 +120,14 @@
 
         function toggleSvc(el, name, price) {
             el.classList.toggle('selected');
-            const icon = el.querySelector('.icon-state');
+            const icon = el.querySelector('.icon-ui');
+            const bar = document.getElementById('price-bar');
             
             if(el.classList.contains('selected')) {
                 total += price;
                 selected.push(name);
                 icon.innerHTML = '✓';
-                icon.style.backgroundColor = '#eab308';
+                icon.style.backgroundColor = '#fbbf24';
                 icon.style.color = '#000';
             } else {
                 total -= price;
@@ -111,16 +137,20 @@
                 icon.style.color = '#fff';
             }
             
-            document.getElementById('price-display').innerText = "Total: $" + total;
+            document.getElementById('total-val').innerText = total;
+            
+            // نمایش یا مخفی کردن نوار قیمت
+            if(total > 0) {
+                bar.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
+            } else {
+                bar.classList.add('opacity-0', 'scale-90', 'pointer-events-none');
+            }
         }
 
         function sendAppt() {
-            if(total === 0) {
-                alert("Please select at least one service! 🐾");
-                return;
-            }
-            const text = `Hi City Pets! I'm interested in: ${selected.join(' + ')}. Estimate: $${total}. Can I book a spot?`;
-            window.open(`https://wa.me/19168202485?text=${encodeURIComponent(text)}`);
+            if(total === 0) return alert("Select a service first!");
+            const msg = `Hi City Pets! Booking request: ${selected.join(' + ')}. Estimate: $${total}`;
+            window.open(`https://wa.me/19168202485?text=${encodeURIComponent(msg)}`);
         }
     </script>
 </body>
