@@ -146,10 +146,11 @@
         }
 
         function bookNow() {
-            if (total === 0) return;
-            
-            const message = `Hi City Pets! 🐾 I would like to book a session for: ${cart.join(' + ')}. My estimated total is $${total}. What is your earliest availability?`;
-            window.open(`https://wa.me/19168202485?text=${encodeURIComponent(message)}`);
+           if (total === 0) return;
+    const message = `Hi City Pets! 🐾 I would like to book: ${cart.join(' + ')}. My estimated total is $${total}.`;
+    
+    window.location.href = `sms:+19168202485?&body=${encodeURIComponent(message)}`;
+}
         }
     </script>
 </body>
