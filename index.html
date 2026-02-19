@@ -8,12 +8,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@900&family=Public+Sans:wght@300;400;800&display=swap');
         
-        body { font-family: 'Public Sans', sans-serif; background-color: #020617; color: white; }
+        body { font-family: 'Public Sans', sans-serif; background-color: #020617; color: white; scroll-behavior: smooth; }
         .font-hero { font-family: 'Unbounded', sans-serif; }
 
-        /* استایل پس‌زمینه دقیقا شبیه اسکرین‌شات 150 */
         .hero-bg {
-            background: linear-gradient(to right, rgba(2, 6, 23, 0.9) 30%, rgba(2, 6, 23, 0.2)), 
+            background: linear-gradient(to right, rgba(2, 6, 23, 0.95) 20%, rgba(2, 6, 23, 0.3)), 
                         url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=2000');
             background-size: cover;
             background-position: center;
@@ -23,134 +22,130 @@
             background: rgba(255, 255, 255, 0.03); 
             backdrop-filter: blur(15px); 
             border: 1px solid rgba(255,255,255,0.08); 
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
         }
-        .selected { border-color: #fbbf24; background: rgba(251, 191, 36, 0.15); }
+
+        .selected { border-color: #fbbf24; background: rgba(251, 191, 36, 0.1); transform: scale(1.02); }
+        .selected .icon-ui { background-color: #fbbf24; color: black; border-color: #fbbf24; }
         
-        /* دکمه‌های شیشه‌ای مشابه عکس */
-        .btn-glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-        }
-        .btn-glass:hover { background: rgba(255, 255, 255, 0.2); transform: translateX(5px); }
+        .btn-interact:active { transform: scale(0.95); }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
-    <nav class="fixed top-0 w-full z-[100] px-6 py-5 flex justify-between items-center bg-transparent">
-        <div class="text-xl font-hero font-bold uppercase tracking-tighter">CITY<span class="text-yellow-500">PETS</span></div>
-        <button onclick="sendAppt()" class="bg-yellow-500 text-black px-6 py-2 rounded-full font-extrabold text-[10px] tracking-widest uppercase hover:scale-105 transition">Book Appointment</button>
+    <nav class="fixed top-0 w-full z-[100] px-6 py-5 flex justify-between items-center bg-slate-950/50 backdrop-blur-sm">
+        <div class="text-xl font-hero font-bold tracking-tighter">CITY<span class="text-yellow-500">PETS</span></div>
+        <a href="tel:9168202485" class="bg-yellow-500 text-black px-5 py-2 rounded-full font-extrabold text-[10px] tracking-widest uppercase">CALL: 916-820-2485</a>
     </nav>
 
-    <section class="hero-bg min-h-screen flex items-center px-6 md:px-20 relative">
+    <header class="hero-bg min-h-screen flex items-center px-6 md:px-20">
         <div class="max-w-3xl mt-10">
-            <span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-6 inline-block">Now Open in Sacramento</span>
-            <h1 class="font-hero text-6xl md:text-8xl leading-none mb-6">
-                Beyond Just <br> <span class="text-yellow-500">Grooming.</span>
-            </h1>
-            <p class="text-gray-300 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
-                Inspired by luxury pet resorts, we provide a stress-free environment for your companions with premium organic treatments.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" class="bg-white text-black px-8 py-4 rounded-xl font-bold hover:bg-gray-200 transition">GET STARTED</button>
-                <button class="btn-glass px-8 py-4 rounded-xl font-bold flex items-center gap-2">
-                    VIEW GALLERY <span>→</span>
-                </button>
+            <span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-6 inline-block">5-Star Sacramento Grooming</span>
+            <h1 class="font-hero text-5xl md:text-8xl leading-none mb-6">Beyond Just <br> <span class="text-yellow-500">Grooming.</span></h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">Inspired by luxury resorts, we offer a stress-free environment for your best friends.</p>
+            <div class="flex gap-4">
+                <button onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})" class="btn-interact bg-white text-black px-8 py-4 rounded-xl font-bold">GET STARTED</button>
             </div>
         </div>
-    </section>
+    </header>
 
     <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
         <div class="mb-16">
             <h2 class="font-hero text-3xl md:text-4xl">Signature Services</h2>
-            <div class="h-1 w-20 bg-yellow-500 mt-4"></div>
+            <p class="text-gray-500 mt-2">Tap to select your pet's custom package</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div onclick="toggleSvc(this, 'Spa Bath', 45)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px] cursor-pointer group">
+            <div onclick="toggleService(this, 'Spa Bath', 45)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px]">
                 <div>
                     <div class="text-4xl mb-6">🛁</div>
                     <h3 class="text-2xl font-bold mb-4">Spa Bath</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Oatmeal shampoo, blueberry facial, and deep conditioning treatment.</p>
+                    <p class="text-gray-400 text-sm">Blueberry facial, organic shampoo, and luxury blow dry.</p>
                 </div>
                 <div class="flex justify-between items-center mt-8">
                     <span class="text-2xl font-bold text-yellow-500">$45</span>
-                    <div class="icon-ui w-12 h-12 rounded-full border border-white/10 flex items-center justify-center font-bold text-xl transition-all group-hover:border-yellow-500">+</div>
+                    <div class="icon-ui w-12 h-12 rounded-full border border-white/20 flex items-center justify-center font-bold text-xl transition-all">+</div>
                 </div>
             </div>
 
-            <div onclick="toggleSvc(this, 'Styling Cut', 75)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px] cursor-pointer group">
+            <div onclick="toggleService(this, 'Full Styling', 75)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px]">
                 <div>
                     <div class="text-4xl mb-6">✂️</div>
-                    <h3 class="text-2xl font-bold mb-4">Styling Cut</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Full breed-standard haircut or creative styling by senior groomers.</p>
+                    <h3 class="text-2xl font-bold mb-4">Full Styling</h3>
+                    <p class="text-gray-400 text-sm">Professional breed-standard cut by master stylists.</p>
                 </div>
                 <div class="flex justify-between items-center mt-8">
                     <span class="text-2xl font-bold text-yellow-500">$75</span>
-                    <div class="icon-ui w-12 h-12 rounded-full border border-white/10 flex items-center justify-center font-bold text-xl transition-all group-hover:border-yellow-500">+</div>
+                    <div class="icon-ui w-12 h-12 rounded-full border border-white/20 flex items-center justify-center font-bold text-xl transition-all">+</div>
                 </div>
             </div>
 
-            <div onclick="toggleSvc(this, 'Day Resort', 35)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px] cursor-pointer group">
+            <div onclick="toggleService(this, 'Day Resort', 35)" class="glass-card p-10 rounded-[40px] flex flex-col justify-between min-h-[320px]">
                 <div>
                     <div class="text-4xl mb-6">🏨</div>
                     <h3 class="text-2xl font-bold mb-4">Day Resort</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Socialization, play-time, and relaxation in our luxury suites.</p>
+                    <p class="text-gray-400 text-sm">Play-time, socialization, and private rest suites.</p>
                 </div>
                 <div class="flex justify-between items-center mt-8">
                     <span class="text-2xl font-bold text-yellow-500">$35</span>
-                    <div class="icon-ui w-12 h-12 rounded-full border border-white/10 flex items-center justify-center font-bold text-xl transition-all group-hover:border-yellow-500">+</div>
+                    <div class="icon-ui w-12 h-12 rounded-full border border-white/20 flex items-center justify-center font-bold text-xl transition-all">+</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="price-bar" class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] opacity-0 transition-all duration-500 scale-90">
-        <div class="bg-white text-black px-8 py-4 rounded-2xl shadow-2xl flex items-center gap-6">
-            <div class="font-bold text-sm uppercase tracking-tighter">Current Estimate: <span class="text-xl text-yellow-600 ml-1">$<span id="total-val">0</span></span></div>
-            <button onclick="sendAppt()" class="bg-black text-white px-6 py-2 rounded-xl font-bold text-xs">BOOK NOW</button>
+    <div id="action-bar" class="fixed bottom-8 left-0 right-0 px-6 z-[100] transform translate-y-32 transition-all duration-500">
+        <div class="max-w-md mx-auto bg-white rounded-[32px] p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center">
+            <div class="flex-1 px-6">
+                <p class="text-[10px] text-gray-400 uppercase font-black">Estimated Total</p>
+                <p class="text-2xl text-black font-black leading-none">$<span id="total-price">0</span></p>
+            </div>
+            <button onclick="bookNow()" class="bg-yellow-500 text-black px-8 py-4 rounded-[26px] font-black text-sm hover:bg-yellow-400 transition">
+                BOOK NOW
+            </button>
         </div>
     </div>
 
     <script>
+        let cart = [];
         let total = 0;
-        let selected = [];
 
-        function toggleSvc(el, name, price) {
-            el.classList.toggle('selected');
-            const icon = el.querySelector('.icon-ui');
-            const bar = document.getElementById('price-bar');
-            
-            if(el.classList.contains('selected')) {
+        function toggleService(element, name, price) {
+            const icon = element.querySelector('.icon-ui');
+            const index = cart.indexOf(name);
+
+            if (index === -1) {
+                // Add to cart
+                cart.push(name);
                 total += price;
-                selected.push(name);
+                element.classList.add('selected');
                 icon.innerHTML = '✓';
-                icon.style.backgroundColor = '#fbbf24';
-                icon.style.color = '#000';
             } else {
+                // Remove from cart
+                cart.splice(index, 1);
                 total -= price;
-                selected = selected.filter(s => s !== name);
+                element.classList.remove('selected');
                 icon.innerHTML = '+';
-                icon.style.backgroundColor = 'transparent';
-                icon.style.color = '#fff';
             }
-            
-            document.getElementById('total-val').innerText = total;
-            
-            // نمایش یا مخفی کردن نوار قیمت
-            if(total > 0) {
-                bar.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
+
+            // Update Price Display
+            document.getElementById('total-price').innerText = total;
+
+            // Animate Action Bar
+            const actionBar = document.getElementById('action-bar');
+            if (total > 0) {
+                actionBar.classList.remove('translate-y-32');
             } else {
-                bar.classList.add('opacity-0', 'scale-90', 'pointer-events-none');
+                actionBar.classList.add('translate-y-32');
             }
         }
 
-        function sendAppt() {
-            if(total === 0) return alert("Select a service first!");
-            const msg = `Hi City Pets! Booking request: ${selected.join(' + ')}. Estimate: $${total}`;
-            window.open(`https://wa.me/19168202485?text=${encodeURIComponent(msg)}`);
+        function bookNow() {
+            if (total === 0) return;
+            const message = `Hi City Pets! 🐾 I'd like to book: ${cart.join(' + ')}. Estimate: $${total}. Please let me know the available time!`;
+            // آدرس واقعی واتس‌اپ بر اساس شماره گوگل مپس
+            window.open(`https://wa.me/19168202485?text=${encodeURIComponent(message)}`);
         }
     </script>
 </body>
