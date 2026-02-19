@@ -3,41 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City Pets Grooming | Sacramento</title>
+    <title>City Pets Pro | Custom Grooming</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .service-card.active { border-color: #2563eb; background-color: #eff6ff; }
+    </style>
 </head>
-<body class="bg-slate-50 font-sans">
-    <nav class="p-4 bg-white shadow-sm flex justify-between items-center px-8">
+<body class="bg-gray-50 font-sans">
+    <nav class="p-4 bg-white shadow-sm sticky top-0 z-50 flex justify-between items-center px-8">
         <h1 class="text-2xl font-bold text-blue-600">City Pets 🐾</h1>
-        <a href="tel:+19168202485" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition">Call Now</a>
+        <div id="cart-counter" class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full font-bold">Total: $0</div>
     </nav>
 
-    <header class="text-center py-12 px-4 bg-white border-b">
-        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1000" 
-             alt="Happy Dog" class="w-48 h-48 mx-auto rounded-full object-cover mb-6 border-4 border-blue-100 shadow-lg">
-        <h2 class="text-4xl font-extrabold text-gray-800 mb-2">Professional Grooming</h2>
-        <p class="text-gray-500 text-lg">The best 5-star care in Sacramento!</p>
+    <header class="text-center py-10 bg-white">
+        <h2 class="text-3xl font-extrabold text-gray-800">Build Your Grooming Package</h2>
+        <p class="text-gray-500">Select the services your pet needs today</p>
     </header>
 
-    <main class="max-w-4xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-8">
-        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-            <h3 class="text-xl font-bold mb-4 flex items-center">📍 Our Location</h3>
-            <p class="text-gray-600 italic">1008 S St A, Sacramento, CA 95811</p>
-            <p class="mt-4 text-blue-600 font-bold uppercase tracking-wider text-sm">Open Today: 9:00 AM - 5:00 PM</p>
+    <main class="max-w-4xl mx-auto py-8 px-6 grid md:grid-cols-3 gap-6">
+        <div onclick="toggleService(this, 30)" class="service-card bg-white p-6 rounded-2xl shadow-sm border-2 border-transparent cursor-pointer transition-all hover:shadow-md">
+            <div class="text-3xl mb-2">🚿</div>
+            <h3 class="font-bold text-lg">Full Bath</h3>
+            <p class="text-gray-500 text-sm">Premium shampoo & dry</p>
+            <p class="mt-4 text-blue-600 font-bold">$30</p>
         </div>
 
-        <div class="bg-blue-600 p-8 rounded-3xl shadow-lg text-white">
-            <h3 class="text-xl font-bold mb-4 flex items-center">✂️ Our Services</h3>
-            <ul class="space-y-2 opacity-90">
-                <li>• Full Grooming & Styling</li>
-                <li>• Healthy Bath & Brush</li>
-                <li>• Nail Trimming & Ear Cleaning</li>
-            </ul>
+        <div onclick="toggleService(this, 25)" class="service-card bg-white p-6 rounded-2xl shadow-sm border-2 border-transparent cursor-pointer transition-all hover:shadow-md">
+            <div class="text-3xl mb-2">✂️</div>
+            <h3 class="font-bold text-lg">Haircut</h3>
+            <p class="text-gray-500 text-sm">Professional styling</p>
+            <p class="mt-4 text-blue-600 font-bold">$25</p>
+        </div>
+
+        <div onclick="toggleService(this, 15)" class="service-card bg-white p-6 rounded-2xl shadow-sm border-2 border-transparent cursor-pointer transition-all hover:shadow-md">
+            <div class="text-3xl mb-2">💅</div>
+            <h3 class="font-bold text-lg">Nail Trim</h3>
+            <p class="text-gray-500 text-sm">Safe & quick filing</p>
+            <p class="mt-4 text-blue-600 font-bold">$15</p>
         </div>
     </main>
 
-    <footer class="text-center py-12 text-gray-400 text-sm">
-        <p>Designed with ❤️ by <span class="font-bold text-gray-600 text-base">M-Ghasamzadeh-Dev</span></p>
+    <section class="max-w-4xl mx-auto mb-20 p-8 bg-blue-600 rounded-3xl text-white text-center">
+        <h3 class="text-2xl font-bold mb-4">Ready to Book?</h3>
+        <p class="mb-6 opacity-90">Click below to send your selected package to us</p>
+        <button onclick="sendBooking()" class="bg-white text-blue-600 px-10 py-3 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition">Book Now via WhatsApp</button>
+    </section>
+
+    <footer class="text-center py-10 text-gray-400">
+        <p>Designed with ❤️ by <strong>M-Ghasamzadeh-Dev</strong></p>
     </footer>
+
+    <script>
+        let totalPrice = 0;
+        function toggleService(element, price) {
+            element.classList.toggle('active');
+            if (element.classList.contains('active')) {
+                totalPrice += price;
+            } else {
+                totalPrice -= price;
+            }
+            document.getElementById('cart-counter').innerText = "Total: $" + totalPrice;
+        }
+
+        function sendBooking() {
+            if(totalPrice === 0) {
+                alert("Please select at least one service!");
+                return;
+            }
+            const message = "Hi City Pets! I want to book a grooming package for my pet. Total estimate: $" + totalPrice;
+            window.open("https://wa.me/19168202485?text=" + encodeURIComponent(message));
+        }
+    </script>
 </body>
 </html>
