@@ -5,41 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>City Pets Grooming | Sacramento</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background-color: #f0f9ff; font-family: sans-serif; }
-        .card { background: white; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); padding: 2rem; }
-    </style>
 </head>
-<body>
-    <nav style="background: white; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <h1 style="color: #2563eb; font-size: 1.5rem; font-weight: bold;">City Pets 🐾</h1>
-        <a href="tel:+19168202485" style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 50px; text-decoration: none;">Call Now</a>
+<body class="bg-slate-50 font-sans">
+    <nav class="p-4 bg-white shadow-sm flex justify-between items-center px-8">
+        <h1 class="text-2xl font-bold text-blue-600">City Pets 🐾</h1>
+        <a href="tel:+19168202485" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition">Call Now</a>
     </nav>
 
-    <div style="text-align: center; padding: 4rem 1rem;">
-        <h2 style="font-size: 2.5rem; font-weight: 800; color: #1f2937;">Professional Grooming</h2>
-        <p style="color: #4b5563; font-size: 1.25rem;">The best 5-star care in Sacramento!</p>
-    </div>
+    <header class="text-center py-12 px-4 bg-white border-b">
+        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&q=80&w=1000" 
+             alt="Happy Dog" class="w-48 h-48 mx-auto rounded-full object-cover mb-6 border-4 border-blue-100 shadow-lg">
+        <h2 class="text-4xl font-extrabold text-gray-800 mb-2">Professional Grooming</h2>
+        <p class="text-gray-500 text-lg">The best 5-star care in Sacramento!</p>
+    </header>
 
-    <div style="max-width: 800px; margin: 0 auto; display: grid; gap: 2rem; padding: 0 1rem;">
-        <div class="card">
-            <h3 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">📍 Our Location</h3>
-            <p style="color: #374151;">1008 S St A, Sacramento, CA 95811</p>
-            <p style="color: #2563eb; font-weight: bold; margin-top: 0.5rem;">Open at 9:00 AM</p>
+    <main class="max-w-4xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+            <h3 class="text-xl font-bold mb-4 flex items-center">📍 Our Location</h3>
+            <p class="text-gray-600 italic">1008 S St A, Sacramento, CA 95811</p>
+            <p class="mt-4 text-blue-600 font-bold uppercase tracking-wider text-sm">Open Today: 9:00 AM - 5:00 PM</p>
         </div>
 
-        <div class="card" style="background: #dbeafe;">
-            <h3 style="font-size: 1.5rem; font-weight: bold; color: #1e40af;">✂️ Our Services</h3>
-            <ul style="color: #1e3a8a; line-height: 2;">
-                <li>Full Grooming & Styling</li>
-                <li>Healthy Bath & Brush</li>
-                <li>Nail Trimming & Ear Cleaning</li>
+        <div class="bg-blue-600 p-8 rounded-3xl shadow-lg text-white">
+            <h3 class="text-xl font-bold mb-4 flex items-center">✂️ Our Services</h3>
+            <ul class="space-y-2 opacity-90">
+                <li>• Full Grooming & Styling</li>
+                <li>• Healthy Bath & Brush</li>
+                <li>• Nail Trimming & Ear Cleaning</li>
             </ul>
         </div>
-    </div>
+    </main>
 
-    <footer style="text-align: center; padding: 3rem; color: #6b7280;">
-        <p>Designed with ❤️ by <strong>M-Ghasamzadeh-Dev</strong></p>
+    <footer class="text-center py-12 text-gray-400 text-sm">
+        <p>Designed with ❤️ by <span class="font-bold text-gray-600 text-base">M-Ghasamzadeh-Dev</span></p>
     </footer>
 </body>
 </html>
